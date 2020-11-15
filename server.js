@@ -14,6 +14,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 //route here
+require("./public/routes/htmlRoutes")(app);
 
 //Listen to port
 app.listen(PORT, function(){
