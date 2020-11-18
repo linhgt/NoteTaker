@@ -18,10 +18,22 @@ module.exports = function(app){
         //A note has a title and text
         const newNote = req.body;
 
-        //Parse newnote to JSON object and write it to db.json
+        //Set newNote id to be notes.length
+        if(notes.length == 0)
+        {
+            newNote.id=0;
+        }
+        else{
+            newNote.id=notes.length;
+        }
+
+        //push newnote  notes
         notes.push(newNote);
+
+        //stringify the notes
         finalNotes = JSON.stringify(notes);
 
+        //Write the finalNotes to db.json
         fs.writeFile("./db/db.json", finalNotes, function(err){
             if(err) throw err;
             console.log("succesfully saved note");
