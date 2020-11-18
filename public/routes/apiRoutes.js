@@ -31,7 +31,7 @@ module.exports = function(app){
         notes.push(newNote);
 
         //stringify the notes
-        finalNotes = JSON.stringify(notes);
+        let finalNotes = JSON.stringify(notes);
 
         //Write the finalNotes to db.json
         fs.writeFile("./db/db.json", finalNotes, function(err){
@@ -40,4 +40,27 @@ module.exports = function(app){
             res.send();
         })
     });
+
+    app.delete("/api/notes/:id", function(req, res){
+        //splice the note from the array
+        notes.splice(req.param.id, 1);
+
+        //set the current id for note after removal
+        if(notes){
+            for(let i = 0; i < notes.length; i++)
+            {
+                notes[i].id = i;
+            }
+        }
+
+        //Stringify the note
+        let finalNotes = JSON.stringify(notes);
+
+        //write the notes back to db
+        fs.writeFile("./db/db.json", finalNotes, function(err){
+            if (err) throw err;
+            console.log("Successfully delete the note");
+            res.send();
+        });
+    })
 }
