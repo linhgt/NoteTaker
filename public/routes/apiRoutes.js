@@ -5,17 +5,17 @@
 //Import modules
 var path = require('path');
 var fs = require('fs');
-var notes = require('../../db/db.json');
+var notes = JSON.parse(fs.readFileSync("./db/db.json"));
 
 module.exports = function(app){
     app.get("/api/notes", function(req, res){
         //res.sendFile(path.join(__dirname, "../notes.html"))
-        return res.json(notes);
+        return res.send(notes);
     });
 
     app.post("/api/notes", function(req, res){
         //New note entered
-        //A note has a title and text
+        //A note has a title and texts
         const newNote = req.body;
 
         //Set newNote id to be notes.length
@@ -57,6 +57,7 @@ module.exports = function(app){
         let finalNotes = JSON.stringify(notes);
 
         //write the notes back to db
+
         fs.writeFile("./db/db.json", finalNotes, function(err){
             if (err) throw err;
             console.log("Successfully delete the note");
