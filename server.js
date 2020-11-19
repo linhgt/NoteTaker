@@ -18,8 +18,8 @@ app.use(express.static(__dirname + '/public'));
  
 
 //route here
-require("./public/routes/htmlRoutes")(app);
 require("./public/routes/apiRoutes")(app);
+require("./public/routes/htmlRoutes")(app);
 
 //Listen to port
 app.listen(PORT, function(){
