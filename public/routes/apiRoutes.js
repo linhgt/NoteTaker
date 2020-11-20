@@ -19,13 +19,7 @@ module.exports = function(app){
         const newNote = req.body;
 
         //Set newNote id to be notes.length
-        if(notes.length == 0)
-        {
-            newNote.id=0;
-        }
-        else{
-            newNote.id=notes.length;
-        }
+        newNote.id = notes.length + 1;
 
         //push newnote  notes
         notes.push(newNote);
