@@ -30,7 +30,12 @@ Save notes are displayed on the left side. To delete the notes, there's a trashb
 
 ## Technologies
 
-HTML, CSS, Javascript, nodejs, express, heroku
+(https://img.shields.io/badge/HTML-blue.svg)
+(https://img.shields.io/badge/CSS-green.svg)
+(https://img.shields.io/badge/JS-yellow.svg)
+(https://img.shields.io/badge/nodejs-red.svg)
+(https://img.shields.io/badge/express-pink.svg)
+(https://img.shields.io/badge/heroku-black.svg)
 
 ## License
 
